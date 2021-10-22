@@ -1,0 +1,19 @@
+{
+  "name": "static-job-listings-master",
+  "version": "1.0.0",
+  "description": "Job listings with filtering coding challenge",
+  "main": "index.js",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "start": "cp -R ./src/images ./dist && parcel src/index.html --no-hmr",
+    "build": "parcel build index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.0.0"
+  },
+  "dependencies": {
+    "lit": "^2.0.2"
+  }
+}
