@@ -1,11 +1,24 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, AttributePart } from 'lit';
 import resetCSS from '../js/reset-css.js';
 
 export class JobListing extends LitElement
 {
   static get properties()
   {
-    return { img: { type: String } };
+    return {
+      company: { type: String },
+      logo: { type: String },
+      new: { type: Boolean },
+      featured: { type: Boolean },
+      position: { type: String },
+      role: { type: String },
+      level: { type: String },
+      postedAt: { type: String },
+      contract: { type: String },
+      location: { type: String },
+      languages: { type: Array },
+      tools: { type: Array }
+    };
   }
   static get styles()
   {
@@ -30,12 +43,12 @@ export class JobListing extends LitElement
           grid-row: 1/span 2;
         }
         .card {
+          background-color: var(--color__white);
           grid-column: 1 / -1;
           grid-row: 2 / -1;
           overflow: hidden;
           border-radius: 0.5rem;
           box-shadow: 0px 15px 20px -5px rgba(13, 113, 130, 0.15), 0px 15px 20px -5px rgba(13, 113, 130, 0.15);
-          background-color: var(--color__white);
         }
         .card__inner {
           padding: 2.4rem;
@@ -151,29 +164,36 @@ export class JobListing extends LitElement
         </div>
         <div class="job">
           <div class="flex flex-col-reverse">
-            <h1 class="job__title">Senior Frontend Developer</h1>
-            <h2 class="job__company">Photosnap</h2>
+            <h1 class="job__title">${ this.position }</h1>
+            <h2 class="job__company">${ this.company }</h2>
           </div>
           <div class="job__details">
-            <span>1d ago</span>
+            <span>${ this.postedAt }</span>
             <span class="bullet">&#8226</span>
-            <span>Full Time</span>
+            <span>${ this.contract }</span>
             <span class="bullet">&#8226</span>
-            <span>USA only</span>
+            <span>${ this.location }</span>
           </div>
         </div>
         <div class="tags">
-          <div class="tag"><span>Frontend</span></div>
-          <div class="tag"><span>Senior</span></div>
-          <div class="tag"><span>HTML</span></div>
-          <div class="tag"><span>CSS</span></div>
-          <div class="tag"><span>JavaScript</span></div>
+          <div class="tag"><span>${ this.role }</span></div>
+          <div class="tag"><span>${ this.level }</span></div>
+
+
         </div>
         <div class="pills">
-          <div class="pill pill--light"><span>NEW!</span></div>
-          <div class="pill pill--dark"><span>FEATURED</span></div>
+          ${ this.new && html`
+            <div class="pill pill--light">
+              <span>NEW!</span>
+            </div>
+          `}
+          ${ this.featured && html`
+            <div class="pill pill--dark">
+              <span>FEATURED</span>
+            </div>
+          `}
         </div>
-        <img class="logo" src="./images/photosnap.svg" alt="" />
+        <img class="logo" src=${ this.logo } alt="" />
       </div>
     `;
   }
