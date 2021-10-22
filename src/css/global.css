@@ -1,10 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@500;700&display=swap');
 
-html {
-	font-family: 'Spartan', sans-serif;
-}
-
 :root {
 	--color__black: #2b3939;
+	--color__grey: #7c8f8f;
+	--color__grey--light: #b7c4c4;
 	--color__teal: #5ca5a5;
+	--color__teal--light: rgba(92, 165, 165, 0.1);
+	--color__white: #ffffff;
+}
+
+html {
+	font-family: 'Spartan', sans-serif;
+	font-size: 10px;
+}
+
+body {
+	background-color: var(--color__teal--light);
 }
