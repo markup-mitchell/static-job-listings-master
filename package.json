@@ -2,7 +2,6 @@
   "name": "static-job-listings-master",
   "version": "1.0.0",
   "description": "Job listings with filtering coding challenge",
-  "main": "index.html",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "start": "cp -R ./src/images ./dist && parcel ./index.html --no-hmr",
