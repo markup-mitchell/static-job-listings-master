@@ -3,6 +3,7 @@ import resetCSS from '../js/reset-css.js';
 
 import './WrapperCard.js';
 import './WrapperBorder.js';
+import './WrapperPill.js';
 
 export class JobListing extends LitElement
 {
@@ -94,7 +95,7 @@ export class JobListing extends LitElement
           margin-right: 0.8rem;
         }
 
-        .pills {
+        .listing-status {
           display: flex;
           justify-content: flex-end;
           align-items: center;
@@ -112,7 +113,6 @@ export class JobListing extends LitElement
           padding-top: 1.6rem;
         }
 
-        .pill,
         .tag {
           display: inline-flex;
           height: 2.4rem;
@@ -133,19 +133,6 @@ export class JobListing extends LitElement
           margin-bottom: -2px;
         }
 
-        /* to get center alignment on Chrome and FF */
-        .pill > span {
-          color: var(--color__white);
-          margin-bottom: -2px;
-        }
-
-        .pill--light {
-          background-color: var(--color__teal);
-        }
-        .pill--dark {
-          background-color: var(--color__black);
-        }
-
         @media (min-width: 600px) {
           .tags {
             grid-column: 4 / -3;
@@ -157,8 +144,8 @@ export class JobListing extends LitElement
             padding-bottom: 0;
             border: 0;
           }
-
         }
+
         @media (min-width: 800px) {
           .logo {
             grid-column: 2;
@@ -170,7 +157,7 @@ export class JobListing extends LitElement
             grid-row: 2 / -1;
           }
 
-          .pills {
+          .listing-status {
             grid-area: 1/4/span 2/span 2;
           }
 
@@ -216,21 +203,22 @@ export class JobListing extends LitElement
         <div class="tags">
           <div class="tag"><span>${ this.role }</span></div>
           <div class="tag"><span>${ this.level }</span></div>
-
-
         </div>
-        <div class="pills">
-          ${ this.new && html`
-            <div class="pill pill--light">
-              <span>NEW!</span>
-            </div>
-          `}
-          ${ this.featured && html`
-            <div class="pill pill--dark">
-              <span>FEATURED</span>
-            </div>
-          `}
-        </div>
+        <!-- Only include aside if listing is featured | new -->
+        ${ (this.featured || this.new) && html`
+          <aside class="listing-status">
+            ${ this.new && html`
+              <wrapper-pill color="light">
+                <p>New!</p>
+              </wrapper-pill>
+            `}
+            ${ this.featured && html`
+              <wrapper-pill color="dark">
+                <p>Featured</p>
+              </wrapper-pill>
+            `}
+          </aside>
+        `}
         <img class="logo" src=${ this.logo } alt="" />
   </article>
     `;
