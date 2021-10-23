@@ -25,10 +25,13 @@ export class JobListing extends LitElement
     return [
       resetCSS,
       css`
-
+        :root {
+          /* --grid-columns: 2.4rem 4.8rem 1fr 1.6rem 0.8rem; */
+          /* --grid-rows:  */
+        }
         .layout {
           display: grid;
-          grid-template-columns: 2.4rem 4.8rem 1fr 1.6rem 0.8rem ;
+          grid-template-columns: 2.4rem 4.8rem 1fr 1.6rem 0.8rem;
           grid-template-rows: 2.4rem 2.4rem max-content max-content;
         }
 
@@ -42,6 +45,7 @@ export class JobListing extends LitElement
           grid-column: 2;
           grid-row: 1/span 2;
         }
+
         .card {
           background-color: var(--color__white);
           grid-column: 1 / -1;
@@ -51,7 +55,6 @@ export class JobListing extends LitElement
           box-shadow: 0px 15px 20px -5px rgba(13, 113, 130, 0.15), 0px 15px 20px -5px rgba(13, 113, 130, 0.15);
         }
         .card__inner {
-          padding: 2.4rem;
           font-size: 1.3rem;
           height: 100%;
           border-left: 0.5rem solid var(--color__teal);
@@ -145,6 +148,47 @@ export class JobListing extends LitElement
         }
         .pill--dark {
           background-color: var(--color__black);
+        }
+
+        @media (min-width: 600px) {
+          .tags {
+            grid-column: 4 / -2;
+            grid-row: 3 / 3;
+            justify-content: flex-end;
+            align-self: center;
+          }
+        }
+        @media (min-width: 800px) {
+          /* :root {
+            --grid-columns: 40px 8.8rem 3.2rem min-content 1fr 40px;
+          } */
+
+          .layout {
+            grid-template-columns: 4rem 8.8rem 3.2rem max-content 1fr 4rem;
+            grid-template-rows: 2.4rem 2.4rem max-content max-content 2.4rem;
+          }
+
+          .logo {
+            grid-column: 2;
+            grid-row: 3;
+          }
+          .card {
+            grid-column: 1 / -1;
+            grid-row: 2 / -1;
+          }
+
+          .pills {
+            grid-area: 1/4/span 2/span 2;
+          }
+          .card__inner {
+            padding: 0;
+          }
+          .job {
+            grid-column: 4 / span 1;
+            grid-row: 3 / span 1;
+            padding: 0;
+            border: 0;
+          }
         }
       `
     ];
