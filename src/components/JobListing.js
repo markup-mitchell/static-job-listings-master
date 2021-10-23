@@ -25,15 +25,13 @@ export class JobListing extends LitElement
     return [
       resetCSS,
       css`
-        :root {
-          /* --grid-columns: 2.4rem 4.8rem 1fr 1.6rem 0.8rem; */
-          /* --grid-rows:  */
-        }
         .layout {
+          --grid-columsn: 2.4rem max-content 3.2rem max-content 1fr 1.6rem 0.8rem;
+          --grid-rows: 2.4rem 2.4rem max-content max-content 2.4rem;
           display: grid;
-          grid-template-columns: 2.4rem 4.8rem 1fr 1.6rem 0.8rem;
-          grid-template-rows: 2.4rem 2.4rem max-content max-content;
-        }
+          grid-template-columns: var(--grid-columsn);
+          grid-template-rows: var(--grid-rows);
+          }
 
         .job__title {
           color: var(--color__black);
@@ -44,6 +42,8 @@ export class JobListing extends LitElement
         .logo {
           grid-column: 2;
           grid-row: 1/span 2;
+          min-width: 48px;
+          max-width: 48px;
         }
 
         .card {
@@ -61,7 +61,7 @@ export class JobListing extends LitElement
         }
         .job {
           line-height: 2.4rem;
-          grid-column: 2 / span 2;
+          grid-column: 2 / span 3;
           grid-row: 3;
           padding-top: 0.8rem;
           padding-bottom: 1.6rem;
@@ -101,7 +101,7 @@ export class JobListing extends LitElement
           display: flex;
           justify-content: flex-end;
           align-items: center;
-          grid-column: 3/ span 2;
+          grid-column: 4/ span 3;
           grid-row: 1/ span 2;
           gap: 1.2rem;
         }
@@ -110,10 +110,9 @@ export class JobListing extends LitElement
           display: flex;
           flex-wrap: wrap;
           gap: 1.6rem;
-          grid-column: 2 /span 2;
+          grid-column: 2 / -1;
           grid-row: 4;
           padding-top: 1.6rem;
-          padding-bottom: 1.6rem;
         }
 
         .pill,
@@ -152,25 +151,30 @@ export class JobListing extends LitElement
 
         @media (min-width: 600px) {
           .tags {
-            grid-column: 4 / -2;
+            grid-column: 4 / -3;
             grid-row: 3 / 3;
             justify-content: flex-end;
             align-self: center;
           }
+          .job {
+            grid-column: 4 / span 1;
+            padding-bottom: 0;
+            border: 0;
+          }
+          .logo {
+            max-width: 72px
+          }
+
         }
         @media (min-width: 800px) {
           /* :root {
             --grid-columns: 40px 8.8rem 3.2rem min-content 1fr 40px;
           } */
 
-          .layout {
-            grid-template-columns: 4rem 8.8rem 3.2rem max-content 1fr 4rem;
-            grid-template-rows: 2.4rem 2.4rem max-content max-content 2.4rem;
-          }
-
           .logo {
             grid-column: 2;
             grid-row: 3;
+            max-width: 88px;
           }
           .card {
             grid-column: 1 / -1;
