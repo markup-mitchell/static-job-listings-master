@@ -16,9 +16,12 @@ export class StackVertical extends LitElement
         display: flex;
         flex-direction: column;
         gap: 1.6rem;
-        padding: 0 2.4rem;
       }
-      `];
+      @media (min-width: 800px) {
+        .stack {
+          gap: 0.8rem;
+        }
+      }      `];
   }
   render()
   {

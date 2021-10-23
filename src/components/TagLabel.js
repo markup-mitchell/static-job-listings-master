@@ -14,11 +14,8 @@ export class TagLabel extends LitElement
       resetCSS, /* button only??? */
       css`
         button {
-          display: inline-flex;
-          height: 2.4rem;
-          align-items: center;
           border-radius: 1.5rem;
-          padding: 0 1rem;
+          padding: 0.9rem 1rem 0.75rem;
           border-radius: 0.4rem;
           color: var(--color__teal);
           background-color: var(--color__teal--light);
@@ -26,7 +23,6 @@ export class TagLabel extends LitElement
           border: none;
           font-size: 1.1rem;
           font-weight: 700;
-          margin-bottom: -2px;
         }
         button:hover,
         button:focus-visible {
