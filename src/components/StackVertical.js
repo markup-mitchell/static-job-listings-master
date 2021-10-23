@@ -5,8 +5,6 @@ import data from '../data.json';
 
 import './JobListing.js';
 
-console.log(data);
-
 export class StackVertical extends LitElement
 {
   static get styles()

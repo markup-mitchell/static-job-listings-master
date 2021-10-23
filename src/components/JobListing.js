@@ -1,5 +1,8 @@
-import { LitElement, html, css, AttributePart } from 'lit';
+import { LitElement, html, css } from 'lit';
 import resetCSS from '../js/reset-css.js';
+
+import './WrapperCard.js';
+import './WrapperBorder.js';
 
 export class JobListing extends LitElement
 {
@@ -26,10 +29,10 @@ export class JobListing extends LitElement
       resetCSS,
       css`
         .layout {
-          --grid-columsn: 2.4rem max-content 3.2rem max-content 1fr 1.6rem 0.8rem;
-          --grid-rows: 2.4rem 2.4rem max-content max-content 2.4rem;
           display: grid;
-          grid-template-columns: var(--grid-columsn);
+          --grid-columns: 2.4rem max-content 3.2rem max-content 1fr 1.6rem 0.8rem;
+          --grid-rows: 2.4rem 2.4rem max-content max-content 2.4rem;
+          grid-template-columns: var(--grid-columns);
           grid-template-rows: var(--grid-rows);
           }
 
@@ -41,24 +44,16 @@ export class JobListing extends LitElement
 
         .logo {
           grid-column: 2;
-          grid-row: 1/span 2;
+          grid-row: 1 / span 2;
           min-width: 48px;
           max-width: 48px;
         }
 
         .card {
-          background-color: var(--color__white);
           grid-column: 1 / -1;
           grid-row: 2 / -1;
-          overflow: hidden;
-          border-radius: 0.5rem;
-          box-shadow: 0px 15px 20px -5px rgba(13, 113, 130, 0.15), 0px 15px 20px -5px rgba(13, 113, 130, 0.15);
         }
-        .card__inner {
-          font-size: 1.3rem;
-          height: 100%;
-          border-left: 0.5rem solid var(--color__teal);
-        }
+
         .job {
           line-height: 2.4rem;
           grid-column: 2 / span 3;
@@ -85,10 +80,12 @@ export class JobListing extends LitElement
           font-size: 1.3rem;
         }
 
-        .flex {
-          display: flex;
+        .job__details p {
+          display: inline-block;
         }
+
         .flex-col-reverse {
+          display: flex;
           flex-direction: column-reverse;
         }
 
@@ -176,9 +173,7 @@ export class JobListing extends LitElement
           .pills {
             grid-area: 1/4/span 2/span 2;
           }
-          .card__inner {
-            padding: 0;
-          }
+
           .job {
             grid-column: 4 / span 1;
             grid-row: 3 / span 1;
@@ -198,23 +193,26 @@ export class JobListing extends LitElement
   render()
   {
     return html`
-      <div class="layout">
+      <article class="layout">
         <div class="card">
-          ${ this.featured && html`<div class="card__inner"></div>` }
+          <wrapper-card>
+            ${ this.featured && html`<wrapper-border></wrapper-border>` }
+          </wrapper-card>
         </div>
-        <div class="job">
-          <div class="flex flex-col-reverse">
+
+        <section class="job">
+          <div class="flex-col-reverse">
             <h1 class="job__title">${ this.position }</h1>
-            <h2 class="job__company">${ this.company }</h2>
+            <p class="job__company">${ this.company }</p>
           </div>
           <div class="job__details">
-            <span>${ this.postedAt }</span>
+            <p>${ this.postedAt }</p>
             <span class="bullet">&#8226</span>
-            <span>${ this.contract }</span>
+            <p>${ this.contract }</p>
             <span class="bullet">&#8226</span>
-            <span>${ this.location }</span>
+            <p>${ this.location }</p>
           </div>
-        </div>
+        </section>
         <div class="tags">
           <div class="tag"><span>${ this.role }</span></div>
           <div class="tag"><span>${ this.level }</span></div>
@@ -234,7 +232,7 @@ export class JobListing extends LitElement
           `}
         </div>
         <img class="logo" src=${ this.logo } alt="" />
-      </div>
+  </article>
     `;
   }
 }
