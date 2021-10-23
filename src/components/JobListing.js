@@ -32,10 +32,8 @@ export class JobListing extends LitElement
       css`
         .layout {
           display: grid;
-          --grid-columns: 2.4rem max-content 3.2rem max-content 1fr 1.6rem 0.8rem;
-          --grid-rows: 2.4rem 2.4rem max-content max-content 2.4rem;
-          grid-template-columns: var(--grid-columns);
-          grid-template-rows: var(--grid-rows);
+          grid-template-columns: 2.4rem max-content 3.2rem max-content 1fr 1.6rem 0.8rem;
+          grid-template-rows: 2.4rem 2.4rem max-content max-content 2.4rem;
           }
 
         .job__title {
@@ -128,6 +126,9 @@ export class JobListing extends LitElement
         }
 
         @media (min-width: 800px) {
+          .layout {
+            grid-template-columns: 4rem max-content 2.4rem max-content 1fr 1.6rem 2.4rem;
+          }
           .logo {
             grid-column: 2;
             grid-row: 3;
@@ -139,7 +140,7 @@ export class JobListing extends LitElement
           }
 
           .listing-status {
-            grid-area: 1/4/span 2/span 2;
+            grid-area: 1/5/span 2/span 2;
           }
 
           .job {
@@ -148,7 +149,17 @@ export class JobListing extends LitElement
             padding: 0;
             border: 0;
           }
+          .job__company {
+            font-size: 1.4rem;
+          }
+          .job__title {
+            font-size: 1.8rem;
+          }
+          .job__details {
+            font-size: 1.5rem;
+          }
         }
+
       `
     ];
   }

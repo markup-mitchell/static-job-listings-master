@@ -36,6 +36,11 @@ export class TagLabel extends LitElement
           outline-color: var(--color__teal);
           outline-offset: 4px;
         }
+        @media (min-width: 1024px) {
+          button {
+            font-size: 1.3rem;
+          }
+        }
       `
     ];
   }
