@@ -4,6 +4,7 @@ import resetCSS from '../js/reset-css.js';
 import './WrapperCard.js';
 import './WrapperBorder.js';
 import './WrapperPill.js';
+import './TagLabel.js';
 
 export class JobListing extends LitElement
 {
@@ -113,26 +114,6 @@ export class JobListing extends LitElement
           padding-top: 1.6rem;
         }
 
-        .tag {
-          display: inline-flex;
-          height: 2.4rem;
-          align-items: center;
-          font-size: 1.1rem;
-          font-weight: 700;
-          border-radius: 1.5rem;
-          padding: 0 1rem;
-        }
-
-        .tag {
-          border-radius: 0.4rem;
-          background-color: var(--color__teal--light);
-        }
-
-        .tag > span {
-          color: var(--color__teal);
-          margin-bottom: -2px;
-        }
-
         @media (min-width: 600px) {
           .tags {
             grid-column: 4 / -3;
@@ -201,8 +182,8 @@ export class JobListing extends LitElement
           </div>
         </section>
         <div class="tags">
-          <div class="tag"><span>${ this.role }</span></div>
-          <div class="tag"><span>${ this.level }</span></div>
+          <tag-label>${ this.role }</tag-label>
+          <tag-label>${ this.level }</tag-label>
         </div>
         <!-- Only include aside if listing is featured | new -->
         ${ (this.featured || this.new) && html`
