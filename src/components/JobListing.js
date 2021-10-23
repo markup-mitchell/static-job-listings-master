@@ -136,7 +136,7 @@ export class JobListing extends LitElement
           margin-bottom: -2px;
         }
 
-        /* this is necessary to get center alignment on Chrome and FF */
+        /* to get center alignment on Chrome and FF */
         .pill > span {
           color: var(--color__white);
           margin-bottom: -2px;
@@ -157,20 +157,12 @@ export class JobListing extends LitElement
             align-self: center;
           }
           .job {
-            grid-column: 4 / span 1;
             padding-bottom: 0;
             border: 0;
-          }
-          .logo {
-            max-width: 72px
           }
 
         }
         @media (min-width: 800px) {
-          /* :root {
-            --grid-columns: 40px 8.8rem 3.2rem min-content 1fr 40px;
-          } */
-
           .logo {
             grid-column: 2;
             grid-row: 3;
@@ -208,7 +200,7 @@ export class JobListing extends LitElement
     return html`
       <div class="layout">
         <div class="card">
-          <div class="card__inner"></div>
+          ${ this.featured && html`<div class="card__inner"></div>` }
         </div>
         <div class="job">
           <div class="flex flex-col-reverse">
