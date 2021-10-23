@@ -58,7 +58,7 @@ export class JobListing extends LitElement
 
         .job {
           line-height: 2.4rem;
-          grid-column: 2 / span 3;
+          grid-column: 2 / -3;
           grid-row: 3;
           padding-top: 0.8rem;
           padding-bottom: 1.6rem;
@@ -109,7 +109,7 @@ export class JobListing extends LitElement
           display: flex;
           flex-wrap: wrap;
           gap: 1.6rem;
-          grid-column: 2 / -1;
+          grid-column: 2 / -3;
           grid-row: 4;
           padding-top: 1.6rem;
         }
@@ -153,11 +153,6 @@ export class JobListing extends LitElement
     ];
   }
 
-  constructor()
-  {
-    super();
-  }
-
   render()
   {
     return html`
@@ -182,11 +177,17 @@ export class JobListing extends LitElement
           </div>
         </section>
         <div class="tags">
-          <tag-label>${ this.role }</tag-label>
-          <tag-label>${ this.level }</tag-label>
+          <tag-label text=${ this.role }></tag-label>
+          <tag-label text=${ this.level }></tag-label>
+          ${ this.languages.map(lang => html`
+            <tag-label text=${ lang }></tag-label>
+          `) }
+          ${ this.tools.map(tool => html`
+            <tag-label text=${ tool }></tag-label>
+          `) }
         </div>
-        <!-- Only include aside if listing is featured | new -->
-        ${ (this.featured || this.new) && html`
+        <!--Only include aside if listing is featured | new -->
+  ${ (this.featured || this.new) && html`
           <aside class="listing-status">
             ${ this.new && html`
               <wrapper-pill color="light">
@@ -199,11 +200,12 @@ export class JobListing extends LitElement
               </wrapper-pill>
             `}
           </aside>
-        `}
-        <img class="logo" src=${ this.logo } alt="" />
-  </article>
-    `;
+        `
+      }
+<img class="logo" src=${ this.logo } alt="" />
+  </article >
+  `;
   }
 }
 
-customElements.define('job-listing', JobListing);
+customElements.define('job-listing', JobListing);;;

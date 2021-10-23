@@ -36,7 +36,9 @@ export class StackVertical extends LitElement
             level=${job.level}
             postedAt=${job.postedAt}
             contract=${job.contract}
-            location=${job.location}>
+            location=${job.location}
+            .languages=${job.languages}
+            .tools=${job.tools}>
           </job-listing>
           `)
         }
