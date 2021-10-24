@@ -170,7 +170,7 @@ export class JobListing extends LitElement
       <article class="layout">
         <div class="card">
           <wrapper-card>
-            ${ this.featured && html`<wrapper-border></wrapper-border>` }
+            ${ this.featured && html`<wrapper-border/>` }
           </wrapper-card>
         </div>
 
@@ -219,4 +219,4 @@ export class JobListing extends LitElement
   }
 }
 
-customElements.define('job-listing', JobListing);;;
+customElements.define('job-listing', JobListing);
