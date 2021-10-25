@@ -14,8 +14,9 @@ export class StackVertical extends LitElement
       role: "",
       level: "",
       languages: [],
-      tools: ["React", "Sass"]
+      tools: []
     };
+
   }
 
   static get styles() /* what does static do for me here? required? */
@@ -36,8 +37,8 @@ export class StackVertical extends LitElement
     ];
   }
 
-  _file
 
+  // The filtering should be done in a controller or something - the StackVertical component should be purely presentational.
   _filteredData(){
     // if any filter is applied only jobs matching that condition are returned
     // if multiple filters are applied only jobs matching all conditions are returned.
@@ -51,11 +52,31 @@ export class StackVertical extends LitElement
     return results;
   }
 
+  updateFilters(e) {
+
+    if (e.detail.filterType === "role") {
+      this.filters = {...this.filters, role: e.detail.text
+      }
+    }
+    if (e.detail.filterType === "level") {
+      this.filters = {...this.filters, level: e.detail.text
+      }
+    }
+    if (e.detail.filterType === "language") {
+      this.filters.languages = [...this.filters.languages, e.detail.text]
+    }
+    this.requestUpdate(); /* do I need to so this??!!*/
+    console.log(this.filters)
+  }
+
   render()
   {
     return html`
     <!-- should be li in a ul, probably -->
-      <div class="stack">
+      <ul>
+        ${this.filters.tools.map(tool => html`<li>${tool}</li>`)}
+      </ul>
+      <div class="stack" @announce-filter=${(e)=>this.updateFilters(e)}>
         ${
           this._filteredData().map((job) => html`
           <job-listing

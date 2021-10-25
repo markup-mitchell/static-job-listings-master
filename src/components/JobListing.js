@@ -170,7 +170,8 @@ export class JobListing extends LitElement
       <article class="layout">
         <div class="card">
           <wrapper-card>
-            ${ this.featured && html`<wrapper-border/>` }
+            <!-- this self-closing tag shouldn't work - but it does! -->
+            ${ this.featured ? html`<wrapper-border/>` : null }
           </wrapper-card>
         </div>
 
@@ -188,30 +189,30 @@ export class JobListing extends LitElement
           </div>
         </section>
         <div class="tags">
-          <tag-label text=${ this.role }></tag-label>
-          <tag-label text=${ this.level }></tag-label>
+          <tag-label text=${ this.role } filterType="role"></tag-label>
+          <tag-label text=${ this.level } filterType="level"></tag-label>
           ${ this.languages.map(lang => html`
-            <tag-label text=${ lang }></tag-label>
+            <tag-label text=${ lang } filterType="language"></tag-label>
           `) }
           ${ this.tools.map(tool => html`
-            <tag-label text=${ tool }></tag-label>
+            <tag-label text=${ tool } filterType="tool"></tag-label>
           `) }
         </div>
         <!--Only include aside if listing is featured | new -->
-  ${ (this.featured || this.new) && html`
+  ${ (this.featured || this.new) ? html`
           <aside class="listing-status">
-            ${ this.new && html`
+            ${ this.new ? html`
               <wrapper-pill color="light">
                 <p>New!</p>
-              </wrapper-pill>
-            `}
-            ${ this.featured && html`
+              </wrapper-pill>` : null
+        }
+            ${ this.featured ? html`
               <wrapper-pill color="dark">
                 <p>Featured</p>
               </wrapper-pill>
-            `}
+            ` : null }
           </aside>
-        `
+        ` : null
       }
 <img class="logo" src=${ this.logo } alt="" />
   </article >

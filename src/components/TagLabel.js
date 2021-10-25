@@ -5,7 +5,8 @@ export class TagLabel extends LitElement
 {
   static get properties() {
     return {
-      text: {type: String}
+      text: {type: String},
+      filterType: {type: String}
     }
   }
   static get styles()
@@ -40,15 +41,26 @@ export class TagLabel extends LitElement
       `
     ];
   }
+  announceFilter(filterType,text) {
+    // console.log(filterType,text)
+    this.dispatchEvent(new CustomEvent('announce-filter', {
+    composed: true,
+    bubbles: true,
+    detail: {
+      filterType: filterType,
+      text: text
+    } }));
+  }
 
   render()
   {
     return html`
-      <button>
+      <button @click=${()=>this.announceFilter(this.filterType,this.text)}>
           ${this.text}
       </button>
     `;
   }
 }
+
 
 customElements.define('tag-label', TagLabel);
