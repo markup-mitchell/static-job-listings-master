@@ -5,8 +5,7 @@
   "Xbrowserslist": "> 0.5%, last 2 versions, not dead /* https://github.com/parcel-bundler/parcel/issues/7101 */",
   "scripts": {
     "start": "cp -R ./src/images ./dist && parcel ./index.html --no-hmr",
-    "winstart": "cp -R ./src/images ./dist && parcel ./index.html --no-hmr",
-    "build": "parcel build index.html"
+    "build": "cp -R ./src/images ./dist && parcel build index.html"
   },
   "author": "",
   "license": "ISC",
