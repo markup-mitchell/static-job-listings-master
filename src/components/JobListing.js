@@ -4,12 +4,10 @@ import resetCSS from '../js/reset-css.js';
 import './WrapperCard.js';
 import './WrapperBorder.js';
 import './WrapperPill.js';
-import './TagLabel.js';
+import './FilterButton.js';
 
-export class JobListing extends LitElement
-{
-  static get properties()
-  {
+export class JobListing extends LitElement {
+  static get properties() {
     return {
       company: { type: String },
       logo: { type: String },
@@ -25,8 +23,7 @@ export class JobListing extends LitElement
       tools: { type: Array }
     };
   }
-  static get styles()
-  {
+  static get styles() {
     return [
       resetCSS,
       css`
@@ -164,60 +161,60 @@ export class JobListing extends LitElement
     ];
   }
 
-  render()
-  {
+  render() {
     return html`
       <article class="layout">
         <div class="card">
           <wrapper-card>
             <!-- this self-closing tag shouldn't work - but it does! -->
-            ${ this.featured ? html`<wrapper-border/>` : null }
+            ${this.featured ? html`
+            <wrapper-border />` : null}
           </wrapper-card>
         </div>
-
+      
         <section class="job">
           <div class="flex-col-reverse">
-            <h1 class="job__title">${ this.position }</h1>
-            <p class="job__company">${ this.company }</p>
+            <h1 class="job__title">${this.position}</h1>
+            <p class="job__company">${this.company}</p>
           </div>
           <div class="job__details">
-            <p>${ this.postedAt }</p>
+            <p>${this.postedAt}</p>
             <span class="bullet">&#8226</span>
-            <p>${ this.contract }</p>
+            <p>${this.contract}</p>
             <span class="bullet">&#8226</span>
-            <p>${ this.location }</p>
+            <p>${this.location}</p>
           </div>
         </section>
         <div class="tags">
-          <tag-label text=${ this.role } filterType="role"></tag-label>
-          <tag-label text=${ this.level } filterType="level"></tag-label>
-          ${ this.languages.map(lang => html`
-            <tag-label text=${ lang } filterType="language"></tag-label>
-          `) }
-          ${ this.tools.map(tool => html`
-            <tag-label text=${ tool } filterType="tool"></tag-label>
-          `) }
+          <filter-button text=${this.role} filterType="role"></filter-button>
+          <filter-button text=${this.level} filterType="level"></filter-button>
+          ${this.languages.map( lang => html`
+          <filter-button text=${lang} filterType="language"></filter-button>
+          `)}
+          ${this.tools.map( tool => html`
+          <filter-button text=${tool} filterType="tool"></filter-button>
+          `)}
         </div>
         <!--Only include aside if listing is featured | new -->
-  ${ (this.featured || this.new) ? html`
-          <aside class="listing-status">
-            ${ this.new ? html`
-              <wrapper-pill color="light">
-                <p>New!</p>
-              </wrapper-pill>` : null
+        ${( this.featured || this.new ) ? html`
+        <aside class="listing-status">
+          ${this.new ? html`
+          <wrapper-pill color="light">
+            <p>New!</p>
+          </wrapper-pill>` : null
         }
-            ${ this.featured ? html`
-              <wrapper-pill color="dark">
-                <p>Featured</p>
-              </wrapper-pill>
-            ` : null }
-          </aside>
+          ${this.featured ? html`
+          <wrapper-pill color="dark">
+            <p>Featured</p>
+          </wrapper-pill>
+          ` : null}
+        </aside>
         ` : null
       }
-<img class="logo" src=${ this.logo } alt="" />
-  </article >
+        <img class="logo" src=${this.logo} alt="" />
+      </article>
   `;
   }
 }
 
-customElements.define('job-listing', JobListing);
+customElements.define( 'job-listing', JobListing );

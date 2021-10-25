@@ -1,16 +1,14 @@
 import { LitElement, html, css } from 'lit';
 import resetCSS from '../js/reset-css.js'; /* needed? */
 
-export class TagLabel extends LitElement
-{
+export class FilterButton extends LitElement {
   static get properties() {
     return {
-      text: {type: String},
-      filterType: {type: String}
-    }
+      text: { type: String },
+      filterType: { type: String }
+    };
   }
-  static get styles()
-  {
+  static get styles() {
     return [
       resetCSS, /* button only??? */
       css`
@@ -41,26 +39,24 @@ export class TagLabel extends LitElement
       `
     ];
   }
-  announceFilter(filterType,text) {
-    // console.log(filterType,text)
-    this.dispatchEvent(new CustomEvent('announce-filter', {
-    composed: true,
-    bubbles: true,
-    detail: {
-      filterType: filterType,
-      text: text
-    } }));
+  emitFilter( text ) {
+    this.dispatchEvent( new CustomEvent( 'emit-filter', {
+      composed: true,
+      bubbles: true,
+      detail: {
+        text: text
+      }
+    } ) );
   }
 
-  render()
-  {
+  render() {
     return html`
-      <button @click=${()=>this.announceFilter(this.filterType,this.text)}>
-          ${this.text}
+      <button @click=${() => this.emitFilter( this.text )}>
+        ${this.text}
       </button>
     `;
   }
 }
 
 
-customElements.define('tag-label', TagLabel);
+customElements.define( 'filter-button', FilterButton );
