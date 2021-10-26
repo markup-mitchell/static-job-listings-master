@@ -81,12 +81,13 @@ export class TagDismiss extends LitElement {
 
   render() {
     return html`
-      <button @click=${()=> this.emitFilter( this.text )}>
+      <button aria-label="Remove filter ${this.text}" type="button" @click=${() => this.emitFilter( this.text )}>
         <span>
           ${this.text}
         </span>
-        <div> <svg xmlns="http://www.w3.org/2000/svg">
-            <path class="dismiss-icon"
+        <div>
+          <svg aria-hidden="true" focusable="false">
+            <path
               d="M11.314 0l2.121 2.121-4.596 4.596 4.596 4.597-2.121 2.121-4.597-4.596-4.596 4.596L0 11.314l4.596-4.597L0 2.121 2.121 0l4.596 4.596L11.314 0z" />
           </svg>
         </div>

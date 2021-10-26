@@ -52,7 +52,7 @@ export class TagToggle extends LitElement {
 
   render() {
     return html`
-      <button @click=${() => this.emitFilter( this.text )}>
+      <button type="button" aria-label="Tag ${this.text} (toggle filter)" @click=${() => this.emitFilter( this.text )}>
         ${this.text}
       </button>
     `;
