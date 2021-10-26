@@ -4,7 +4,7 @@ import resetCSS from '../js/reset-css.js';
 import './WrapperCard.js';
 import './WrapperBorder.js';
 import './WrapperPill.js';
-import './FilterButton.js';
+import './TagToggle';
 
 export class JobListing extends LitElement {
   static get properties() {
@@ -186,13 +186,13 @@ export class JobListing extends LitElement {
           </div>
         </section>
         <div class="tags">
-          <filter-button text=${this.role} filterType="role"></filter-button>
-          <filter-button text=${this.level} filterType="level"></filter-button>
+          <tag-toggle text=${this.role} filterType="role"></tag-toggle>
+          <tag-toggle text=${this.level} filterType="level"></tag-toggle>
           ${this.languages.map( lang => html`
-          <filter-button text=${lang} filterType="language"></filter-button>
+          <tag-toggle text=${lang} filterType="language"></tag-toggle>
           `)}
           ${this.tools.map( tool => html`
-          <filter-button text=${tool} filterType="tool"></filter-button>
+          <tag-toggle text=${tool} filterType="tool"></tag-toggle>
           `)}
         </div>
         <!--Only include aside if listing is featured | new -->
@@ -202,7 +202,7 @@ export class JobListing extends LitElement {
           <wrapper-pill color="light">
             <p>New!</p>
           </wrapper-pill>` : null
-        }
+          }
           ${this.featured ? html`
           <wrapper-pill color="dark">
             <p>Featured</p>
@@ -210,7 +210,7 @@ export class JobListing extends LitElement {
           ` : null}
         </aside>
         ` : null
-      }
+        }
         <img class="logo" src=${this.logo} alt="" />
       </article>
   `;
