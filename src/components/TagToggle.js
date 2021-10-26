@@ -18,7 +18,7 @@ export class TagToggle extends LitElement {
           border-radius: 0.4rem;
           color: var(--color__teal);
           background-color: var(--color__teal--light);
-          transition: var(--transition__out);
+          transition: var(--transition__in);
           border: none;
           font-size: 1.1rem;
           font-weight: 700;
@@ -27,7 +27,7 @@ export class TagToggle extends LitElement {
         button:focus-visible {
           background-color: var(--color__teal);
           color: var(--color__white);
-          transition: var(--transition__in);
+          transition: var(--transition__out);
           outline-color: var(--color__teal);
           outline-offset: 4px;
         }

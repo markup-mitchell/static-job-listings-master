@@ -1,7 +1,8 @@
 import { LitElement, html, css } from 'lit';
 
-import resetCSS from '../js/reset-css.js';
+import './JobListing.js';
 import data from '../data.json';
+import './TagDismiss.js';
 
 data.forEach( job => {
   job.tags = [];
@@ -10,7 +11,6 @@ data.forEach( job => {
   job.tools.forEach( tool => job.tags.push( tool ) );
 } );
 
-import './JobListing.js';
 
 export class StackVertical extends LitElement {
   constructor() {
@@ -19,9 +19,16 @@ export class StackVertical extends LitElement {
   }
 
   static get styles() /* what does static do for me here? required? */ {
-    return [
-      resetCSS,
-      css`
+    return css`
+      ul { 
+        list-style: none;
+        display: flex;
+        background-color: var(--color__white);
+        padding: 2rem 4rem;
+        border-radius: 0.5rem;
+        box-shadow: 0px 15px 20px -5px rgba(13, 113, 130, 0.15);
+        gap: 1.5rem;
+      }
       .stack {
         display: flex;
         flex-direction: column;
@@ -31,8 +38,7 @@ export class StackVertical extends LitElement {
         .stack {
           gap: 0.8rem;
         }
-      }`
-    ];
+      }`;
   }
 
 
@@ -53,10 +59,16 @@ export class StackVertical extends LitElement {
   render() {
     return html`
     <!-- should be li in a ul, probably -->
-    <ul>
+    ${this.filterTags.length > 0 ?
+      html`<ul @emit-filter=${( e )=> this.updateFilters( e )}>
       ${this.filterTags.map( tag => html`
-      <tag-toggle text=${tag} dismiss />` )}
-    </ul>
+      <li>
+        <tag-dismiss text=${tag}></tag-dismiss>
+      </li>
+      ` )}
+    </ul>`
+        : null
+      }
     <div class="stack" @emit-filter=${( e )=> this.updateFilters( e )}>
       ${this.filtered( data ).map( job => html`
       <job-listing company=${job.company} logo=${job.logo} ?new=${job.new} ?featured=${job.featured} position=${
