@@ -51,7 +51,7 @@ export class FilterButton extends LitElement {
 
   render() {
     return html`
-      <button @click=${() => this.emitFilter( this.text )}>
+      <button @click=${()=> this.emitFilter( this.text )}>
         ${this.text}
       </button>
     `;

@@ -24,10 +24,11 @@ export class StackVertical extends LitElement {
         list-style: none;
         display: flex;
         background-color: var(--color__white);
-        padding: 2rem 4rem;
+        padding: 2rem;
         border-radius: 0.5rem;
         box-shadow: 0px 15px 20px -5px rgba(13, 113, 130, 0.15);
         gap: 1.5rem;
+        flex-wrap: wrap;
       }
       .stack {
         display: flex;
@@ -35,6 +36,9 @@ export class StackVertical extends LitElement {
         gap: 1.6rem;
       }
       @media (min-width: 800px) {
+        ul {
+          padding: 2rem 4rem;
+        }
         .stack {
           gap: 0.8rem;
         }

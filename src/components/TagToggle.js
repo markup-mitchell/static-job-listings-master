@@ -1,5 +1,4 @@
 import { LitElement, html, css } from 'lit';
-import resetCSS from '../js/reset-css.js'; /* needed? */
 
 export class TagToggle extends LitElement {
   static get properties() {
@@ -9,9 +8,7 @@ export class TagToggle extends LitElement {
     };
   }
   static get styles() {
-    return [
-      resetCSS, /* button only??? */
-      css`
+    return css`
         button {
           border-radius: 1.5rem;
           padding: 0.9rem 1rem 0.75rem;
@@ -36,8 +33,7 @@ export class TagToggle extends LitElement {
             font-size: 1.3rem;
           }
         }
-      `
-    ];
+      `;
   }
 
   emitFilter( text ) {
