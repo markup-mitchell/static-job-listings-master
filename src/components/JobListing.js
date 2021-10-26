@@ -28,7 +28,7 @@ export class JobListing extends LitElement {
       resetCSS,
       css`
         .layout {
-          display: grid;
+          display: grid; 
           grid-template-columns: 2.4rem max-content 3.2rem max-content 1fr 1.6rem 0.8rem;
           grid-template-rows: 2.4rem 2.4rem max-content max-content 2.4rem;
           }
@@ -53,7 +53,7 @@ export class JobListing extends LitElement {
 
         .job {
           line-height: 2.4rem;
-          grid-column: 2 / -3;
+          grid-column: 2 / span 3 ;
           grid-row: 3;
           padding-top: 0.8rem;
           padding-bottom: 1.6rem;
@@ -111,7 +111,7 @@ export class JobListing extends LitElement {
 
         @media (min-width: 600px) {
           .tags {
-            grid-column: 4 / -3;
+            grid-column: 5 / -3;
             grid-row: 3 / 3;
             justify-content: flex-end;
             align-self: center;
