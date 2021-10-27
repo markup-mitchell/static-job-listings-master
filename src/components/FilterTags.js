@@ -49,7 +49,7 @@ export class FilterTags extends LitElement {
       display: inline-block;
     }
 
-      button{
+      tag-dismiss {
         grid-row: 2;
         grid-column: 3;
         white-space: nowrap;
@@ -81,7 +81,7 @@ export class FilterTags extends LitElement {
           `)
         }
       </ul>
-      <button>Clear all</button>
+      <tag-dismiss text="Clear"></tag-dismiss>
   </article>
   `;
   }

@@ -23,7 +23,7 @@ export class ListController extends LitElement {
         width: 100%;
         min-height: 100vh;
         display: grid;
-        grid-template-rows: 2rem 13.6rem 2.4rem 4rem 1fr;
+        grid-template-rows: 2rem 13.6rem 3.2rem 4rem 1fr;
       }
       filter-tags {
         width: 100%;
@@ -67,7 +67,12 @@ export class ListController extends LitElement {
 
   updateFilters( e ) {
     const filterNameEvent = e.detail.text;
-    !this.filterTags.includes( filterNameEvent ) ? this.filterTags = [...this.filterTags, filterNameEvent] : this.filterTags = this.filterTags.filter( term => term !== filterNameEvent );
+    if ( filterNameEvent === "Clear" ) {
+      this.filterTags = [];
+    } else {
+
+      !this.filterTags.includes( filterNameEvent ) ? this.filterTags = [...this.filterTags, filterNameEvent] : this.filterTags = this.filterTags.filter( term => term !== filterNameEvent );
+    }
     this.requestUpdate();
   }
 
@@ -75,19 +80,19 @@ export class ListController extends LitElement {
     return html`
     <main>
       <div class="tag-wrapper">
-        <filter-tags @emit-filter=${( e )=> this.updateFilters( e )}
+        <filter-tags @emit-filter=${( e ) => this.updateFilters( e )}
           .filterTags=${this.filterTags}>
         </filter-tags>
       </div>
     
-      <div class="stack" @emit-filter=${( e ) => this.updateFilters( e )}>
+      <div class="stack" @emit-filter=${( e )=> this.updateFilters( e )}>
         ${this.filtered( data ).map( job => html`
         <job-listing company=${job.company} logo=${job.logo} ?new=${job.new} ?featured=${job.featured}
           position=${job.position} role=${job.role} level=${job.level} postedAt=${job.postedAt} contract=${job.contract}
           location=${job.location} .languages=${job.languages} .tools=${job.tools}>
         </job-listing>
         `)
-          }
+    }
       </div>
     </main>
     `;
