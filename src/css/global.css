@@ -95,6 +95,7 @@ select {
   display: grid;
   grid-template-columns: minmax(2.4rem, 4rem) 1fr minmax(2.4rem, 4rem);
   grid-template-rows: 15.6rem 1fr 6rem;
+  background-color: var(--color__teal--light);
 }
 
 .pattern {

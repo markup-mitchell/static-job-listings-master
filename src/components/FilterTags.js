@@ -11,8 +11,31 @@ export class FilterTags extends LitElement {
   }
   static get styles() {
     return css`
-      .tag-wrapper {
+        wrapper-card {
+          grid-column: 1 / -1;
+          grid-row: 1 / span 3;
+        }
+        article {
+          display: grid;
+          grid-template-columns: 2.4rem 1fr min-content 2.4rem;
+          grid-template-rows: 2.4rem 1fr 2.4rem;
+        }
+        h1 {
+          /* sr-only */
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+        border-width: 0;
+      }
+      
+      .tag-list {
         display: flex;
+        flex-wrap: wrap;
         margin: 0;
         padding: 0;
         list-style: none;
@@ -21,31 +44,10 @@ export class FilterTags extends LitElement {
         grid-column: 2;
         grid-row: 2;
       }
+
       li {
-        display: inline-block;
-      }
-      h1 {
-        /* sr-only */
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border-width: 0;
-      }
-      article {
-        width: 100%;
-        display: grid;
-        grid-template-columns: 2.4rem 1fr min-content 2.4rem;
-        grid-template-rows: 2.4rem 1fr 2.4rem;
-      }
-      wrapper-card {
-        grid-column: 1 / -1;
-        grid-row: 1 / span 3;
-      }
+      display: inline-block;
+    }
 
       button{
         grid-row: 2;
@@ -70,7 +72,7 @@ export class FilterTags extends LitElement {
     return html`
     <article>
       <wrapper-card></wrapper-card>
-      <ul class="tag-wrapper">
+      <ul class="tag-list">
         ${
           this.filterTags.map( tag => html`
           <li>
@@ -79,6 +81,7 @@ export class FilterTags extends LitElement {
           `)
         }
       </ul>
+      <button>Clear all</button>
   </article>
   `;
   }

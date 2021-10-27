@@ -5,10 +5,8 @@ import './WrapperBorder.js';
 import './WrapperPill.js';
 import './TagToggle';
 
-export class JobListing extends LitElement
-{
-  static get properties()
-  {
+export class JobListing extends LitElement {
+  static get properties() {
     return {
       company: { type: String },
       logo: { type: String },
@@ -24,8 +22,7 @@ export class JobListing extends LitElement
       tools: { type: Array }
     };
   }
-  static get styles()
-  {
+  static get styles() {
     return css`
         * {
           border: 0;
@@ -33,7 +30,7 @@ export class JobListing extends LitElement
         }
         .layout {
           display: grid;
-          grid-template-columns: 2.4rem max-content 3.2rem max-content 1fr 1.6rem 0.8rem;
+          grid-template-columns: 2.4rem max-content 3.2rem min-content 1fr 1.6rem 0.8rem;
           grid-template-rows: 2.4rem 2.4rem max-content max-content 2.4rem;
           opacity: 0;
           }
@@ -58,7 +55,7 @@ export class JobListing extends LitElement
 
         .job {
           line-height: 2.4rem;
-          grid-column: 2 / span 3 ;
+          grid-column: 2 / -3 ;
           grid-row: 3;
           padding-top: 0.8rem;
           padding-bottom: 1.6rem;
@@ -124,6 +121,7 @@ export class JobListing extends LitElement
           .job {
             padding-bottom: 0;
             border: 0;
+            grid-column: 2 / -6 ;
           }
         }
 
@@ -177,74 +175,71 @@ export class JobListing extends LitElement
       `;
   }
 
-  firstUpdated()
-  {
-    const el = this.shadowRoot.querySelector(".layout");
-    el.classList.add("fade-in");
+  firstUpdated() {
+    const el = this.shadowRoot.querySelector( ".layout" );
+    el.classList.add( "fade-in" );
   }
 
-  disconnectedCallback()
-  {
-    const el = this.shadowRoot.querySelector(".layout");
-    el.classList.remove("fade-in");
-    el.classList.add("fade-out");
+  disconnectedCallback() {
+    const el = this.shadowRoot.querySelector( ".layout" );
+    el.classList.remove( "fade-in" );
+    el.classList.add( "fade-out" );
   }
 
-  render()
-  {
+  render() {
     return html`
       <article class="layout">
         <div class="card">
           <wrapper-card>
             <!-- this self-closing tag shouldn't work - but it does! -->
-            ${ this.featured ? html`
-            <wrapper-border />` : null }
+            ${this.featured ? html`
+            <wrapper-border />` : null}
           </wrapper-card>
         </div>
-
+      
         <section class="job">
           <div class="flex-col-reverse">
-            <h1 class="job__title">${ this.position }</h1>
-            <p class="job__company">${ this.company }</p>
+            <h1 class="job__title">${this.position}</h1>
+            <p class="job__company">${this.company}</p>
           </div>
           <div class="job__details">
-            <p>${ this.postedAt }</p>
+            <p>${this.postedAt}</p>
             <span class="bullet">&#8226</span>
-            <p>${ this.contract }</p>
+            <p>${this.contract}</p>
             <span class="bullet">&#8226</span>
-            <p>${ this.location }</p>
+            <p>${this.location}</p>
           </div>
         </section>
         <div class="tags">
-          <tag-toggle text=${ this.role } filterType="role"></tag-toggle>
-          <tag-toggle text=${ this.level } filterType="level"></tag-toggle>
-          ${ this.languages.map(lang => html`
-          <tag-toggle text=${ lang } filterType="language"></tag-toggle>
-          `) }
-          ${ this.tools.map(tool => html`
-          <tag-toggle text=${ tool } filterType="tool"></tag-toggle>
-          `) }
+          <tag-toggle text=${this.role} filterType="role"></tag-toggle>
+          <tag-toggle text=${this.level} filterType="level"></tag-toggle>
+          ${this.languages.map( lang => html`
+          <tag-toggle text=${lang} filterType="language"></tag-toggle>
+          `)}
+          ${this.tools.map( tool => html`
+          <tag-toggle text=${tool} filterType="tool"></tag-toggle>
+          `)}
         </div>
         <!--Only include aside if listing is featured | new -->
-        ${ (this.featured || this.new) ? html`
+        ${( this.featured || this.new ) ? html`
         <aside class="listing-status">
-          ${ this.new ? html`
+          ${this.new ? html`
           <wrapper-pill color="light">
             <p>New!</p>
           </wrapper-pill>` : null
         }
-          ${ this.featured ? html`
+          ${this.featured ? html`
           <wrapper-pill color="dark">
             <p>Featured</p>
           </wrapper-pill>
-          ` : null }
+          ` : null}
         </aside>
         ` : null
       }
-        <img class="logo" src=${ this.logo } alt="" />
+        <img class="logo" src=${this.logo} alt="" />
       </article>
   `;
   }
 }
 
-customElements.define('job-listing', JobListing);
+customElements.define( 'job-listing', JobListing );

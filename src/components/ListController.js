@@ -1,9 +1,8 @@
 import { LitElement, html, css } from 'lit';
 
-import './JobListing.js';
 import data from '../data.json';
-import './TagDismiss.js';
 import './FilterTags';
+import './JobListing.js';
 
 data.forEach( job => {
   job.tags = [];
@@ -12,8 +11,7 @@ data.forEach( job => {
   job.tools.forEach( tool => job.tags.push( tool ) );
 } );
 
-
-export class StackVertical extends LitElement {
+export class ListController extends LitElement {
   constructor() {
     super();
     this.filterTags = [];
@@ -21,7 +19,24 @@ export class StackVertical extends LitElement {
 
   static get styles() /* what does static do for me here? required? */ {
     return css`
+      main {
+        width: 100%;
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: 2rem 13.6rem 2.4rem 4rem 1fr;
+      }
+      filter-tags {
+        width: 100%;
+      }
+      .tag-wrapper {
+        display: flex;
+        align-items: flex-end;
+        grid-column: 1;
+        grid-row: 2 / span 2;
+      }
       .stack {
+        grid-row: 5;
+        grid-column: 1;
         display: flex;
         flex-direction: column;
         gap: 1.6rem;
@@ -58,23 +73,26 @@ export class StackVertical extends LitElement {
 
   render() {
     return html`
-    <filter-tags
-      @emit-filter=${( e ) => this.updateFilters( e )}
-      .filterTags=${this.filterTags}>
-    </filter-tags>
-
-    <div class="stack" @emit-filter=${( e )=> this.updateFilters( e )}>
-      ${this.filtered( data ).map( job => html`
-      <job-listing company=${job.company} logo=${job.logo} ?new=${job.new} ?featured=${job.featured} position=${
-       job.position} role=${job.role} level=${job.level} postedAt=${job.postedAt} contract=${job.contract}
-        location=${job.location} .languages=${job.languages} .tools=${job.tools}>
-      </job-listing>
-      `)
-      }
-    </div>
+    <main>
+      <div class="tag-wrapper">
+        <filter-tags @emit-filter=${( e )=> this.updateFilters( e )}
+          .filterTags=${this.filterTags}>
+        </filter-tags>
+      </div>
+    
+      <div class="stack" @emit-filter=${( e ) => this.updateFilters( e )}>
+        ${this.filtered( data ).map( job => html`
+        <job-listing company=${job.company} logo=${job.logo} ?new=${job.new} ?featured=${job.featured}
+          position=${job.position} role=${job.role} level=${job.level} postedAt=${job.postedAt} contract=${job.contract}
+          location=${job.location} .languages=${job.languages} .tools=${job.tools}>
+        </job-listing>
+        `)
+          }
+      </div>
+    </main>
     `;
   }
 }
 
-customElements.define( 'stack-vertical', StackVertical );
+customElements.define( 'list-controller', ListController );
 
