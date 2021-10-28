@@ -88,7 +88,7 @@ export class ListController extends LitElement {
       <div class="stack" @emit-filter=${( e )=> this.updateFilters( e )}>
         ${this.filtered( data ).map( job => html`
         <job-listing company=${job.company} logo=${job.logo} ?new=${job.new} ?featured=${job.featured}
-          position=${job.position} role=${job.role} level=${job.level} postedAt=${job.postedAt} contract=${job.contract}
+          position=${job.position} devRole=${job.role} level=${job.level} postedAt=${job.postedAt} contract=${job.contract}
           location=${job.location} .languages=${job.languages} .tools=${job.tools}>
         </job-listing>
         `)

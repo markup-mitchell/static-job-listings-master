@@ -13,7 +13,7 @@ export class JobListing extends LitElement {
       new: { type: Boolean },
       featured: { type: Boolean },
       position: { type: String },
-      role: { type: String },
+      devRole: { type: String },
       level: { type: String },
       postedAt: { type: String },
       contract: { type: String },
@@ -211,13 +211,13 @@ export class JobListing extends LitElement {
           </div>
         </section>
         <div class="tags">
-          <tag-toggle text=${this.role} filterType="role"></tag-toggle>
-          <tag-toggle text=${this.level} filterType="level"></tag-toggle>
+          <tag-toggle text=${this.devRole}></tag-toggle>
+          <tag-toggle text=${this.level}></tag-toggle>
           ${this.languages.map( lang => html`
-          <tag-toggle text=${lang} filterType="language"></tag-toggle>
+          <tag-toggle text=${lang}></tag-toggle>
           `)}
           ${this.tools.map( tool => html`
-          <tag-toggle text=${tool} filterType="tool"></tag-toggle>
+          <tag-toggle text=${tool}></tag-toggle>
           `)}
         </div>
         <!--Only include aside if listing is featured | new -->
@@ -227,7 +227,7 @@ export class JobListing extends LitElement {
           <wrapper-pill color="light">
             <p>New!</p>
           </wrapper-pill>` : null
-        }
+          }
           ${this.featured ? html`
           <wrapper-pill color="dark">
             <p>Featured</p>
@@ -235,7 +235,7 @@ export class JobListing extends LitElement {
           ` : null}
         </aside>
         ` : null
-      }
+        }
         <img class="logo" src=${this.logo} alt="" />
       </article>
   `;

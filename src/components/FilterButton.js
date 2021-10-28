@@ -5,7 +5,6 @@ export class FilterButton extends LitElement {
   static get properties() {
     return {
       text: { type: String },
-      filterType: { type: String }
     };
   }
   static get styles() {
