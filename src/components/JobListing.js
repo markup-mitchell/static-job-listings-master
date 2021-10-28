@@ -221,7 +221,7 @@ export class JobListing extends LitElement {
             <p>${this.location}</p>
           </div>
         </section>
-        <div class="tags">
+        <section class="tags">
           <h2 class="sr-only">Listing Tags</h2>
           <tag-toggle text=${this.devRole}></tag-toggle>
           <tag-toggle text=${this.level}></tag-toggle>
@@ -231,10 +231,11 @@ export class JobListing extends LitElement {
           ${this.tools.map( tool => html`
           <tag-toggle text=${tool}></tag-toggle>
           `)}
-        </div>
+        </section>
         <!--Only include aside if listing is featured | new -->
         ${( this.featured || this.new ) ? html`
-        <div class="listing-status">
+        <section class="listing-status">
+          <h2 class="sr-only">Listing Status</h2>
           ${this.new ? html`
           <wrapper-pill color="light">
             <p>New!</p>
@@ -245,7 +246,7 @@ export class JobListing extends LitElement {
             <p>Featured</p>
           </wrapper-pill>
           ` : null}
-        </div>
+        </section>
         ` : null
       }
         <img class="logo" src=${this.logo} alt="" />
