@@ -7,6 +7,8 @@
   --color__teal: #5ca5a5;
   --color__teal--light: rgba(92, 165, 165, 0.1);
   --color__white: #ffffff;
+  --color__red: rgba(185, 28, 28);
+  --color__red--light: rgba(127, 29, 29, 0.1);
 
   --transition__in: background-color 0.3s ease-out, color 0.1s ease-out;
   --transition__out: all 0.2s ease-in;

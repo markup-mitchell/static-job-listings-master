@@ -12,7 +12,6 @@ export class TagDismiss extends LitElement {
         overflow: hidden;
         align-items: center;
         border-radius: 1.5rem;
-        
         padding: 0;
         border-radius: 0.4rem;
         color: var(--color__teal);
@@ -47,6 +46,10 @@ export class TagDismiss extends LitElement {
           outline-offset: 4px;
       }
 
+      button:hover path {
+        fill: var(--color__white);
+      }
+
       button:focus-visible {
         outline-color: var(--color__black);
         outline-offset: 4px;
@@ -59,6 +62,17 @@ export class TagDismiss extends LitElement {
 
      path {
         fill: var(--color__white);
+      }
+
+      .Clear {
+        color: var(--color__red);
+        background-color: var(--color__red--light);
+      }
+      .Clear div {
+        background-color: var(--color__red--light);
+      }
+      .Clear path {
+        fill: var(--color__red);
       }
 
       @media (min-width: 1024px) {
@@ -81,7 +95,8 @@ export class TagDismiss extends LitElement {
 
   render() {
     return html`
-      <button aria-label="Remove filter ${this.text}" type="button" @click=${() => this.emitFilter( this.text )}>
+      <button class=${this.text} aria-label="Remove filter ${this.text}" type="button" @click=${() => this.emitFilter(
+      this.text )}>
         <span>
           ${this.text}
         </span>
