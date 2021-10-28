@@ -53,7 +53,7 @@ Moving things around in the design file, considering how the data was grouped an
 
 ### Implementation
 
-Once I was happy with the deisgn I was aiming for I was pleasantly surprised at how fast I could move and how much I enjoyed the process. Making the card component repsonsive with grid was fun, and I LOVE how grid lets me position design elements like the card without it needing to be a structural element wrapping the actual content.
+Once I was happy with the design I was aiming for I was pleasantly surprised at how fast I could move and how much I enjoyed the process. Making the card component repsonsive with grid was fun, and I LOVE how grid lets me position design elements like the card without it needing to be a structural element wrapping the actual content.
 
 This is a composition of two discrete elements: an outer card with rounded corners and shadows, and an inner card with a colored border on the left:
 
