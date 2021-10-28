@@ -1,6 +1,6 @@
-# Frontend Mentor - Profile card component solution
+# Frontend Mentor - Job listings with filtering
 
-This is a solution to the [Profile card component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/profile-card-component-cfArpWshJ). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+This is a solution to the [Job listings with filtering challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -9,11 +9,9 @@ This is a solution to the [Profile card component challenge on Frontend Mentor](
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
+  - [Design](#design)
+  - [implementation](#implementation)
+  - [Continued Development](#continued-development)
 
 ## Overview
 
@@ -70,55 +68,14 @@ This is a composition of two discrete elements: an outer card with rounded corne
 
 These components can be used separately to contain arbitrary content **or** be composed together - conditional on a data point in this case - to indicate something specific to the context.
 
-And
+[NB - I had a bunch more notes on this challange that seem to have been lost somehow and I can't face recreating them - sorry!]
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+## Continued Development
 
-To see how you can add code snippets, see below:
+There's a whole bunch of little things I could do to polish this thing up to a more "production-ready" level, but TBH I have other things to learn and tech debt I can be paid to fix, so I'm proabably not going to much more. I've learned what I wanted from this exercise and it's time to move on. 
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
+- Deviations from the design are all conscious choices to improve (IMO) the UI visuals or UX
+- Tested in chromium, firefox, edge, android clients - all observed issues (eg focus styles in firefox) are classified "won't fix" for the reasons stated above
+- Codebase health started well but dropped off towards the end as I hacked around issues to get it over the line. If development was on-going I'd address these incidentally as I worked on features/bugs. 
 
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉');
-};
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
-
-### Continued development
-
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
-
-### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
-
-## Author
-
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+END
