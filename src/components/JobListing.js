@@ -28,6 +28,17 @@ export class JobListing extends LitElement {
           border: 0;
           margin: 0;
         }
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+        border-width: 0;
+      }
         .layout {
           display: grid;
           grid-template-columns: 2.4rem max-content 3.2rem min-content 1fr 1.6rem 0.8rem;
@@ -211,6 +222,7 @@ export class JobListing extends LitElement {
           </div>
         </section>
         <div class="tags">
+          <h2 class="sr-only">Listing Tags</h2>
           <tag-toggle text=${this.devRole}></tag-toggle>
           <tag-toggle text=${this.level}></tag-toggle>
           ${this.languages.map( lang => html`
@@ -222,20 +234,20 @@ export class JobListing extends LitElement {
         </div>
         <!--Only include aside if listing is featured | new -->
         ${( this.featured || this.new ) ? html`
-        <aside class="listing-status">
+        <div class="listing-status">
           ${this.new ? html`
           <wrapper-pill color="light">
             <p>New!</p>
           </wrapper-pill>` : null
-          }
+        }
           ${this.featured ? html`
           <wrapper-pill color="dark">
             <p>Featured</p>
           </wrapper-pill>
           ` : null}
-        </aside>
+        </div>
         ` : null
-        }
+      }
         <img class="logo" src=${this.logo} alt="" />
       </article>
   `;

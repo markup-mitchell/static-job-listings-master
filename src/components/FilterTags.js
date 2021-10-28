@@ -20,8 +20,7 @@ export class FilterTags extends LitElement {
           grid-template-columns: 2.4rem 1fr min-content 2.4rem;
           grid-template-rows: 2.4rem 1fr 2.4rem;
         }
-        h1 {
-          /* sr-only */
+        .sr-only {
           position: absolute;
           width: 1px;
           height: 1px;
@@ -72,6 +71,7 @@ export class FilterTags extends LitElement {
     return html`
     <article>
       <wrapper-card></wrapper-card>
+      <h1 class="sr-only">Filter by Tag</h1>
       <ul class="tag-list">
         ${
           this.filterTags.map( tag => html`
